@@ -8,25 +8,5 @@
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
 }
-.header {
-  grid-area: h;
-  background-color: #42aaff;
-}
-.header img {
-  width: 75px;
-}
-.nav{
-  grid-area: n;
-  background-color: #00ffff;
-}
-.profile{
-  grid-area: c;
-  background-color: #D3A3D3;
-}
 
-.headerImg img {
-  width: 650px;
-}
-.avatar img{
-  width: 250px;
-}
+

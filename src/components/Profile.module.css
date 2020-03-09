@@ -1,0 +1,15 @@
+.profile{
+    grid-area: c;
+    background-color: #D3A3D3;
+  }
+  
+  
+  .avatar img{
+    width: 250px;
+  }
+  .item {
+    color: #FFFF00;
+  }
+  .posts {
+    color: #FFFF00;
+  }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-import Nav from './components/nav';
+import Nav from './components/NavBar';
 import Profile from './components/Profile';
 
 
