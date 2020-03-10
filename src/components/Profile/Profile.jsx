@@ -11,7 +11,7 @@ function Content() {
         <div className={classes.profile}>
           <HeaderImage />
           <UserInfo />
-        <MyPosts />
+          <MyPosts />
         </div>
     );
 }
