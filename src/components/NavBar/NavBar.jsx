@@ -1,35 +1,38 @@
 import React from 'react';
 import classes from'./NavBar.module.css'
 
-function Nav () {
+function NavBar () {
     return (
         <nav className={classes.nav}>
         <div className={classes.item}>
-          My Profile
+          <a href='/profile'>My Profile</a>
         </div>
         <div className={classes.item}>
-          News
+          <a href='message'> Message</a>
+          </div>
+        <div className={classes.item}>
+          <a href='/news'>News</a>
         </div>
         <div className={classes.item}>
-          Friends
+          <a href='/frindes'>Friends</a>
         </div>
         <div className={classes.item}>
-          Communities
+          <a href='/communites'>Communities</a>
         </div>
         <div className={classes.item}>
-          Photo
+          <a href='/photo'>Photo</a>
         </div>
         <div className={classes.item}>
-          Music
+          <a href='/music'>Music</a>
         </div>
         <div className={classes.item}>
-          Videos
+          <a href='/videos'>Videos</a>
         </div>
         <div className={classes.item}>
-          Games
+          <a href='/games'>Games</a>
         </div>
       </nav>
     );
 }
 
-export default Nav;
+export default NavBar;
