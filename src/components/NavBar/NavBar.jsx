@@ -14,10 +14,10 @@ function NavBar () {
           <a href='/news'>News</a>
         </div>
         <div className={classes.item}>
-          <a href='/frindes'>Friends</a>
+          <a href='/friends'>Friends</a>
         </div>
         <div className={classes.item}>
-          <a href='/communites'>Communities</a>
+          <a href='/communities'>Сommunities</a>
         </div>
         <div className={classes.item}>
           <a href='/photo'>Photo</a>
