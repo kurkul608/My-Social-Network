@@ -1,0 +1,8 @@
+.userinfo{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 25px;
+}
+.data{
+    padding: 10px;
+}

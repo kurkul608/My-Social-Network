@@ -5,9 +5,9 @@ import Data from './Data/Data';
 
 function UserInfo() {
     return(
-        <div>
+        <div className={classes.userinfo}>
             <Avatar />
-            <Data name='Petr M.' city='Saratov'/>
+            <div className={classes.data}><Data name='Petr M.' city='Saratov'/></div>
         </div>
     );
 }

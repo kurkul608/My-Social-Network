@@ -9,8 +9,8 @@ function Post(props){
             <img src={logo} />
             {props.message}
             <div>
-            <span> Like</span>
-            <span> DissLike</span>
+            <span>{props.likesCount} Like </span>
+            <span>{props.disslikesCount} DissLike</span>
             </div> 
           </div>
     );

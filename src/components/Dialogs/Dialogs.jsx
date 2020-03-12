@@ -2,29 +2,47 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogName from './DialogName/DialogName';
 import Message from './Message/Message';
+import { NavLink } from 'react-router-dom';
+
+
 
 
 function Dialogs(props){
+    let dialogData = [
+        {name: 'Petr', id: 1}, 
+        {name: 'Iuliia', id: 2},
+        {name: 'Alexey', id: 3},
+        {name: 'Ivan', id:4},
+        {name:'Alla', id: 5},
+        {name: 'Stanislav', id: 6},
+        {name: 'Vladimir', id: 7},
+        {name: 'Oleg', id: 8},
+        {name: 'Mew', id: 9}
+    ]
+    let dialogElement = dialogData
+        .map(d => <DialogName name={d.name} id={d.id} />);
+    
+    
+        let messagesData = [
+        {message: 'Hi! Thats my first web-site!'},
+        {message: 'How are you?'}
+    ]
+    let messagesElement = messagesData
+        .map(m => <Message message={m.message}/>);
     return(
-        <div>
+        
             <div className={classes.Dialogs}>
                 <div className={classes.dialogsItems}>
-                    <div className={classes.item + ' ' + classes.active}>PETR</div>
-                    <DialogName className={classes.item + ' ' + classes.active} name="Petr" />
-                    <DialogName className={classes.item + classes.active} name="Iuliia"/>
-                    <DialogName className={classes.item + classes.active} name="Alexey"/>
-                    <DialogName className={classes.item + classes.active} name="Ivan"/>
-                    <DialogName className={classes.item + classes.active} name="Alla"/>
-                    <DialogName className={classes.item + classes.active} name="Stanislav"/>
-                    <DialogName className={classes.item + classes.active} name="Raisa"/>
-                    <DialogName className={classes.item + classes.active} name="Oleg"/>
+                    {/* <DialogName name={dialogData[0].name} id={dialogData[0].id}/> */}
+                    {dialogElement}
                 </div> 
                 <div className={classes.Messages}>
-                    <Message className={classes.message} message="Hi! Thats my first web-site!"/>
-                    <Message className={classes.message} message="How are you?"/>
+                    {messagesElement}
+                    {/* <Message message={messagesData[0].message}/> */}
                 </div>
             </div>
-        </div>
+        
     );
+    
 }
 export default Dialogs;

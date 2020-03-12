@@ -22,7 +22,7 @@ function App() {
         <NavBar />
         <div className='app-wrapper-content'>
           <Route path="/profile" component={Profile}/>
-          <Route path="/message" component={Dialogs}/>
+          <Route path="/messages" component={Dialogs}/>
           <Route path="/news" component={News}/>
           <Route path="/friends" component={Friends}/>
           <Route path="/communities" component={Communities}/>

@@ -1,3 +1,19 @@
 .posts {
     color: #FFFF00;
   }
+  .item{
+    margin-top: 10px;
+  }
+  /* .mypost{
+    padding: 5px;
+  } */
+  .mypost{
+    padding: 35px;
+  }
+  .createnewpost{
+    padding: 10px;
+  }
+  /* .item_new_post{
+    display: grid;
+    grid-row:  2f 2f;
+  } */
