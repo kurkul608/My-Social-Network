@@ -1,35 +1,36 @@
 import React from 'react';
 import classes from'./NavBar.module.css'
+import { NavLink } from 'react-router-dom';
 
 function NavBar () {
     return (
         <nav className={classes.nav}>
         <div className={classes.item}>
-          <a href='/profile'>My Profile</a>
+          <NavLink to='/profile' activeClassName={classes.active}>My Profile</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='message'> Message</a>
+          <NavLink to='message' activeClassName={classes.active}> Message</NavLink>
           </div>
         <div className={classes.item}>
-          <a href='/news'>News</a>
+          <NavLink to='/news' activeClassName={classes.active}>News</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/friends'>Friends</a>
+          <NavLink to='/friends' activeClassName={classes.active}>Friends</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/communities'>Сommunities</a>
+          <NavLink to='/communities' activeClassName={classes.active}>Сommunities</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/photo'>Photo</a>
+          <NavLink to='/photo' activeClassName={classes.active}>Photo</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/music'>Music</a>
+          <NavLink to='/music' activeClassName={classes.active}>Music</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/videos'>Videos</a>
+          <NavLink to='/videos' activeClassName={classes.active}>Videos</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='/games'>Games</a>
+          <NavLink to='/games' activeClassName={classes.active}>Games</NavLink>
         </div>
       </nav>
     );
