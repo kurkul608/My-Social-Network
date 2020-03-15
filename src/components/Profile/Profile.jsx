@@ -5,13 +5,12 @@ import HeaderImage from './HeaderImage/HeaderImage';
 import UserInfo from './UserInfo/UserInfo';
 
 
-
-function Content() {
+function Content(props) {
     return(
         <div className={classes.profile}>
           <HeaderImage />
           <UserInfo />
-          <MyPosts />
+          <MyPosts postData={props.postData}/>
         </div>
     );
 }
