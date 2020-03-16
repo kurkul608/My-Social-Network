@@ -31,8 +31,8 @@ function App(props) {
           <Route path="/music" component={Music}/>
           <Route path="/videos" component={Videos}/>
           <Route path="/games" component={Games}/> */}
-          <Route path="/profile" render={ () => <Profile postData={props.postData}/>}/>
-          <Route path="/messages" render={ () => <Dialogs messagesData={props.messagesData} dialogData={props.dialogData} />}/>
+          <Route path="/profile" render={ () => <Profile postData={props.state.profilePage.postData}/>}/>
+          <Route path="/messages" render={ () => <Dialogs messagesData={props.state.dialogsPage.messagesData} dialogData={props.state.dialogsPage.dialogData} />}/>
           <Route path="/news" component={News}/>
           <Route path="/friends" component={Friends}/>
           <Route path="/communities" component={Communities}/>
