@@ -20,26 +20,20 @@ function App(props) {
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <NavBar />
+        <NavBar sideBar={props.state.sideBar}/>
         <div className='app-wrapper-content'>
-          {/* <Route path="/profile" component={Profile}/>
-          <Route path="/messages" component={Dialogs}/>
-          <Route path="/news" component={News}/>
+          <Route path="/profile" 
+                                render={ () => <Profile profilePage={props.state.profilePage} />}/>
+          <Route path="/messages" 
+                                render={ () => <Dialogs messagesData={props.state.dialogsPage.messagesData} dialogData={props.state.dialogsPage.dialogData} />}/>
           <Route path="/friends" component={Friends}/>
+          <Route path="/music" component={Music}/>
+          {/* <Route path="/friends" component={Friends}/>
           <Route path="/communities" component={Communities}/>
           <Route path="/photo" component={Photos}/>
           <Route path="/music" component={Music}/>
           <Route path="/videos" component={Videos}/>
           <Route path="/games" component={Games}/> */}
-          <Route path="/profile" render={ () => <Profile postData={props.state.profilePage.postData}/>}/>
-          <Route path="/messages" render={ () => <Dialogs messagesData={props.state.dialogsPage.messagesData} dialogData={props.state.dialogsPage.dialogData} />}/>
-          <Route path="/news" component={News}/>
-          <Route path="/friends" component={Friends}/>
-          <Route path="/communities" component={Communities}/>
-          <Route path="/photo" component={Photos}/>
-          <Route path="/music" component={Music}/>
-          <Route path="/videos" component={Videos}/>
-          <Route path="/games" component={Games}/>
         </div>
       </div>
     </BrowserRouter>

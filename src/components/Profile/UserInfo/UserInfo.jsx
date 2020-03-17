@@ -3,11 +3,13 @@ import classes from './UserInfo.module.css';
 import Avatar from './Avatar/Avatar';
 import Data from './Data/Data';
 
-function UserInfo() {
+function UserInfo(props) {
     return(
         <div className={classes.userinfo}>
-            <Avatar />
-            <div className={classes.data}><Data name='Petr M.' city='Saratov'/></div>
+            <Avatar avatar={props.avatar}/>
+            <div className={classes.data}>
+                <Data name={props.name} city={props.city}/>
+            </div>
         </div>
     );
 }

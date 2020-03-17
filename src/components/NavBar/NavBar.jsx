@@ -2,10 +2,14 @@ import React from 'react';
 import classes from'./NavBar.module.css'
 import { NavLink } from 'react-router-dom';
 
-function NavBar () {
+
+function NavBar (props) {
+  let nav = props.sideBar.menu.map(s => <div className={classes.item}><NavLink to={s.path}>{s.name}</NavLink></div>);
+  
     return (
         <nav className={classes.nav}>
-        <div className={classes.item}>
+         {nav}
+        {/* <div className={classes.item}>
           <NavLink to='/profile' activeClassName={classes.active}>My Profile</NavLink>
         </div>
         <div className={classes.item}>
@@ -31,7 +35,7 @@ function NavBar () {
         </div>
         <div className={classes.item}>
           <NavLink to='/games' activeClassName={classes.active}>Games</NavLink>
-        </div>
+        </div> */}
       </nav>
     );
 }

@@ -1,11 +1,10 @@
 import React from 'react';
-import avatar from './images/avatar.jpg';
 import classes from './Avatar.module.css'
 
-function Avatar() {
+function Avatar(props) {
     return(
         <div className={classes.avatar}>
-        <img src={avatar} />
+        <img src={props.avatar} />
         </div>
     );
 }
