@@ -4,8 +4,12 @@ import DialogName from './DialogName/DialogName';
 import Message from './Message/Message';
 import { NavLink } from 'react-router-dom';
 
+let newMessageElement = React.createRef();
 
-
+let newMessage = () => {
+    let text = newMessageElement.current.value;
+    alert(text);
+}
 
 function Dialogs(props){
     
@@ -21,6 +25,10 @@ function Dialogs(props){
                 </div> 
                 <div className={classes.Messages}>
                     {messagesElement}
+                </div>
+                <div>
+                    <textarea ref={newMessageElement}></textarea>
+                    <button onClick={newMessage}>SendMessage</button>
                 </div>
             </div>
         

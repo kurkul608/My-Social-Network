@@ -1,6 +1,10 @@
   import profileIMG from './ProfileHead/images/Head.jpg'
   import avatar from './UsersInfo/Avatars/images/avatar.jpg'
   import logo from './Post/images/logo.svg'
+  import { renderEntrieTree } from '../render'
+  
+  let newRender = () => renderEntrieTree(allData)
+
   let state = {
       profilePage: {
         postData: [
@@ -41,4 +45,23 @@
       
        
   }
-  export default state;
+
+  export let addPost = (postMessage) => {
+    let newPost = {
+      id: 5,
+      message: postMessage,
+      likesCount: 0,
+      disslikesCount: 0
+    };
+    state.profilePage.postData.push(newPost);
+    newRender();
+  }
+
+
+
+  let allData = {
+    state: state,
+    addPost:addPost
+  }
+  
+  export default allData;
