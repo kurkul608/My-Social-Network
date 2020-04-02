@@ -8,7 +8,10 @@ function MyPosts(props) {
   let newPost = () => {
     let text = newPostElement.current.value;
     props.addPost(text);
-    newPostElement.current.value = ''
+  }
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text)
   }
   let postElements = props.postData
     .map(p => <Post message={p.message} likesCount={p.likesCount} disslikesCount={p.disslikesCount} />);
@@ -18,7 +21,7 @@ function MyPosts(props) {
           <div className={classes.posts}>
             <h3>My posts</h3>
             <div className={classes.item_new_post}>
-              <textarea ref={newPostElement}/>
+              <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
              <div lassName={classes.createnewpost}>
                 <button onClick={newPost}>Create new post</button>
                 </div>

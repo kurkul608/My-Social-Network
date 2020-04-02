@@ -1,9 +1,13 @@
   import profileIMG from './ProfileHead/images/Head.jpg'
   import avatar from './UsersInfo/Avatars/images/avatar.jpg'
   import logo from './Post/images/logo.svg'
-  import { renderEntrieTree } from '../render'
+
   
-  let newRender = () => renderEntrieTree(allData)
+  
+  let rerenderEntrieTree = () => {
+
+  }
+
 
   let state = {
       profilePage: {
@@ -11,6 +15,7 @@
             {id: 1, message: 'Hi!', likesCount: 157, disslikesCount: 0},
             {id: 2, message: 'Today is 10.03.2020', likesCount: 725, disslikesCount: 13}
           ],
+          newPostText: 'Hi, Petr M.',
         profileIMG: profileIMG,
         usersInfo: [
            {id:1, name:'Petr M.', city:'Saratov', avatar: avatar }
@@ -46,22 +51,27 @@
        
   }
 
+  window.state = state;
+
+
   export let addPost = (postMessage) => {
     let newPost = {
       id: 5,
-      message: postMessage,
+      message: state.profilePage.newPostText,
       likesCount: 0,
       disslikesCount: 0
     };
     state.profilePage.postData.push(newPost);
-    newRender();
+    state.profilePage.newPostText = '';
+    rerenderEntrieTree();
+  }
+  export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = (newText);
+    rerenderEntrieTree();
   }
 
-
-
-  let allData = {
-    state: state,
-    addPost:addPost
+  export const subscribe = (observer) => {
+    rerenderEntrieTree = observer;
   }
   
-  export default allData;
+  export default state;

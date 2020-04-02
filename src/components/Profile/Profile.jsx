@@ -13,7 +13,11 @@ function Content(props) {
           <HeaderImage profileIMG={props.profilePage.profileIMG}/>
           {/* <UserInfo UsersInfo={props.profilePage.usersInfo}/> */}
           {postUserInfo}
-          <MyPosts postData={props.profilePage.postData} addPost={props.addPost}/>
+          <MyPosts 
+            newPostText={props.profilePage.newPostText}
+            postData={props.profilePage.postData}
+            addPost={props.addPost}
+            updateNewPostText={props.updateNewPostText}/>
         </div>
     );
 }

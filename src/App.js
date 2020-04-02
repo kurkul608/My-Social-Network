@@ -14,7 +14,6 @@ import Videos from './components/Videos/Videos';
 import Games from './components/Games/Games';
 
 
-
 function App(props) {
   return (
     <BrowserRouter>
@@ -23,7 +22,7 @@ function App(props) {
         <NavBar sideBar={props.state.sideBar}/>
         <div className='app-wrapper-content'>
           <Route path="/profile" 
-              render={ () => <Profile profilePage={props.state.profilePage} addPost={props.addPost}/>}/>
+              render={ () => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
           <Route path="/messages" 
               render={ () => <Dialogs messagesData={props.state.dialogsPage.messagesData} dialogData={props.state.dialogsPage.dialogData} />}/>
           <Route path="/friends" component={Friends}/>
