@@ -16,15 +16,15 @@ import Games from './components/Games/Games';
 
 function App(props) {
   return (
-    <BrowserRouter>
+    
       <div className='app-wrapper'>
         <Header />
         <NavBar sideBar={props.state.sideBar}/>
         <div className='app-wrapper-content'>
           <Route path="/profile" 
-              render={ () => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
+              render={ () => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />}/>
           <Route path="/messages" 
-              render={ () => <Dialogs messagesData={props.state.dialogsPage.messagesData} dialogData={props.state.dialogsPage.dialogData} />}/>
+              render={ () => <Dialogs dialogsPage={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
           <Route path="/friends" component={Friends}/>
           <Route path="/music" component={Music}/>
           {/* <Route path="/friends" component={Friends}/>
@@ -35,7 +35,7 @@ function App(props) {
           <Route path="/games" component={Games}/> */}
         </div>
       </div>
-    </BrowserRouter>
+    
   );
 }
 

@@ -16,8 +16,7 @@ function Content(props) {
           <MyPosts 
             newPostText={props.profilePage.newPostText}
             postData={props.profilePage.postData}
-            addPost={props.addPost}
-            updateNewPostText={props.updateNewPostText}/>
+            dispatch={props.dispatch}/>
         </div>
     );
 }

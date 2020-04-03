@@ -1,6 +1,10 @@
   import profileIMG from './ProfileHead/images/Head.jpg'
   import avatar from './UsersInfo/Avatars/images/avatar.jpg'
   import logo from './Post/images/logo.svg'
+import profileReducer from './profile-reducer';
+import sideBarReducer from './sidebar-reducer';
+import dialogsReducer from './dialogs-reducer';
+
 
   let store = {
       _state: {
@@ -9,11 +13,12 @@
               {id: 1, message: 'Hi!', likesCount: 157, disslikesCount: 0},
               {id: 2, message: 'Today is 10.03.2020', likesCount: 725, disslikesCount: 13}
             ],
-            newPostText: 'Hi, Petr M.',
+          
           profileIMG: profileIMG,
           usersInfo: [
             {id:1, name:'Petr M.', city:'Saratov', avatar: avatar }
-          ]
+          ],
+          newPostText: '',
         },
         dialogsPage: {
           messagesData: [
@@ -31,7 +36,8 @@
               {name: 'Vladimir', id: 7},
               {name: 'Oleg', id: 8},
               {name: 'Mew', id: 9}
-            ]
+            ],
+            newMessageBody: ''
         },
         sideBar: {
           menu: [
@@ -51,26 +57,19 @@
       console.log('state update');
       
     },
-    addPost () {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-        disslikesCount: 0
-      };
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber();
-    },
-    updateNewPostText (newText) {
-      this._state.profilePage.newPostText = (newText);
-      this._callSubscriber();
-    },
     subscribe (observer) {
       this._callSubscriber = observer;
+    },
+    
+    dispatch (action) {
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.sideBar = sideBarReducer(this._state.sideBar, action);
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+      this._callSubscriber(this._state);
+      
     }
 
-
+    
   }
 
   window.state = store;

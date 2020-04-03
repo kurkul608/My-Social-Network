@@ -1,4 +1,4 @@
-import store from './Redux/State';
+import store from './Redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -7,20 +7,22 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 // addPost('nwviuevn')
-    let rerenderEntrieTree = () =>{
+    let rerenderEntrieTree = (state) =>{
+        debugger;
     ReactDOM.render(
     <BrowserRouter>
-        <App state={store.getstate()} 
-        addPost={store.addPost.bind(store)} 
-        updateNewPostText={store.updateNewPostText.bind(store)}/>
+        <App state={state} 
+            dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>,
     document.getElementById('root'));
 };
+debugger;
+rerenderEntrieTree(store.getState());
 
-rerenderEntrieTree(store.getstate());
-
-
-store.subscribe(rerenderEntrieTree);
+store.subscribe( () => {
+    let state = store.getState();
+    rerenderEntrieTree(state);
+});
 
 
 serviceWorker.unregister();
