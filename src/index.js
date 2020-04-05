@@ -5,18 +5,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext from './storeContext';
+import { Provider } from 'react-redux';
 
 // addPost('nwviuevn')
     let rerenderEntrieTree = (state) =>{
         debugger;
     ReactDOM.render(
     <BrowserRouter>
-        <StoreContext.Provider value={store}>
-            <App state={state} 
-                dispatch={store.dispatch.bind(store)} 
-                store={store}/>
-        </StoreContext.Provider>
+        <Provider store={store}>
+            <App />
+        </Provider>
     </BrowserRouter>,
     document.getElementById('root'));
 };

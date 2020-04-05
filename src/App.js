@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
-import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import {Route, BrowserRouter} from "react-router-dom";
@@ -12,6 +11,7 @@ import Photos from './components/Photos/Photos';
 import Music from './components/Music/Music';
 import Videos from './components/Videos/Videos';
 import Games from './components/Games/Games';
+import NavBarContainer from './components/NavBar/NavBarContainer';
 
 
 function App(props) {
@@ -19,12 +19,13 @@ function App(props) {
     
       <div className='app-wrapper'>
         <Header />
-        <NavBar sideBar={props.state.sideBar}/>
+        {/* <NavBar sideBar={props.state.sideBar}/> */}
+        <NavBarContainer/>
         <div className='app-wrapper-content'>
           <Route path="/profile" 
-              render={ () => <Profile store={props.store}/>}/>
+              render={ () => <Profile/>}/>
           <Route path="/messages" 
-              render={ () => <DialogsContainer store={props.store}/>}/>
+              render={ () => <DialogsContainer/>}/>
           <Route path="/friends" component={Friends}/>
           <Route path="/music" component={Music}/>
           {/* <Route path="/friends" component={Friends}/>

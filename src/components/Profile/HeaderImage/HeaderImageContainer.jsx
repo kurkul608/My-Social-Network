@@ -1,10 +1,16 @@
 import React from 'react';
 import HeaderImage from './HeaderImage'
+import { connect } from 'react-redux';
 
 
-function HeaderImageContainer(props) {
-    let state = props.store.getState();
-    return(<HeaderImage profileIMG={state.profilePage.profileIMG}/>)
+
+let mapStateToProps =(state) => {
+    return {
+        profileIMG: state.profilePage.profileIMG
+    }
+
 }
+
+const HeaderImageContainer = connect(mapStateToProps)(HeaderImage);
 
 export default HeaderImageContainer;

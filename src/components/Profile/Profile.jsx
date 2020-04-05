@@ -9,9 +9,9 @@ function Content(props) {
   
     return(
         <div className={classes.profile}>
-          <HeaderImageContainer store={props.store}/>
-          <UserInfoContainer store={props.store}/>
-          <MyPostsContainer store={props.store} />
+          <HeaderImageContainer />
+          <UserInfoContainer />
+          <MyPostsContainer  />
         </div>
     );
 }
