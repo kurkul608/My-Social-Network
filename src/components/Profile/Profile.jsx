@@ -1,22 +1,17 @@
 import React from 'react';
 import classes from './Profile.module.css'
-import MyPosts from './MyPosts/MyPosts';
-import HeaderImage from './HeaderImage/HeaderImage';
-import UserInfo from './UserInfo/UserInfo';
+import UserInfoContainer from './UserInfo/UserInfoContainer';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
+import HeaderImageContainer from './HeaderImage/HeaderImageContainer';
 
 
 function Content(props) {
-  let postUserInfo = props.profilePage.usersInfo
-  .map(p => <UserInfo name={p.name} city={p.city} avatar={p.avatar}/>);
+  
     return(
         <div className={classes.profile}>
-          <HeaderImage profileIMG={props.profilePage.profileIMG}/>
-          {/* <UserInfo UsersInfo={props.profilePage.usersInfo}/> */}
-          {postUserInfo}
-          <MyPosts 
-            newPostText={props.profilePage.newPostText}
-            postData={props.profilePage.postData}
-            dispatch={props.dispatch}/>
+          <HeaderImageContainer store={props.store}/>
+          <UserInfoContainer store={props.store}/>
+          <MyPostsContainer store={props.store} />
         </div>
     );
 }

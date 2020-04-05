@@ -15,7 +15,7 @@ let initialState ={
     usersInfo: [
       {id:1, name:'Petr M.', city:'Saratov', avatar: avatar }
     ],
-    newPostText: 'Hi'
+    newPostText: ''
 };
 const profileReducer = (state = initialState, action) => {
 
