@@ -24,7 +24,7 @@ function App(props) {
           <Route path="/profile" 
               render={ () => <Profile store={props.store}/>}/>
           <Route path="/messages" 
-              render={ () => <DialogsContainer store={props.store} dialogsPage={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
+              render={ () => <DialogsContainer store={props.store}/>}/>
           <Route path="/friends" component={Friends}/>
           <Route path="/music" component={Music}/>
           {/* <Route path="/friends" component={Friends}/>
