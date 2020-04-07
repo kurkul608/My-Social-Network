@@ -8,8 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // addPost('nwviuevn')
-    let rerenderEntrieTree = (state) =>{
-        debugger;
     ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
@@ -17,14 +15,8 @@ import { Provider } from 'react-redux';
         </Provider>
     </BrowserRouter>,
     document.getElementById('root'));
-};
-debugger;
-rerenderEntrieTree(store.getState());
 
-store.subscribe( () => {
-    let state = store.getState();
-    rerenderEntrieTree(state);
-});
+
 
 
 serviceWorker.unregister();
