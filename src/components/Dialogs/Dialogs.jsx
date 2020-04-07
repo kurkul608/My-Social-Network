@@ -19,9 +19,9 @@ let onMessageChange = () => {
 
 
     let dialogElement = props.dialogData
-        .map(d => <DialogName name={d.name} id={d.id} />);
+        .map(d => <DialogName name={d.name} key={d.id} id={d.id} />);
     let messagesElement = props.messagesData
-        .map(m => <Message message={m.message}/>);
+        .map(m => <Message message={m.message} key={m.id}/>);
     return(
         
             <div className={classes.Dialogs}>

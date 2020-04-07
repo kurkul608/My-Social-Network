@@ -5,8 +5,8 @@ const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {
     messagesData: [
-        {message: 'Hi! Thats my first web-site!'},
-        {message: 'How are you?'}
+        {message: 'Hi! Thats my first web-site!', id: 1},
+        {message: 'How are you?', id: 2}
       ],
       messageLogo: logo,
       dialogData: [
@@ -26,21 +26,20 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch(action.type){
-        case UPDATE_NEW_MESSAAGE_BODY:{
-          let stateCopy = {...state};
-            stateCopy.newMessageBody = action.body;
-            return stateCopy;
-          }
-        case SEND_MESSAGE:{
-            let newBody ={ 
-                message: state.newMessageBody
-              }
-              let stateCopy  = {...state}
-              stateCopy.messagesData = [...state.messagesData]
-              stateCopy.messagesData.push(newBody);
-              stateCopy.newMessageBody = '';
-              return stateCopy;
-            }
+        case UPDATE_NEW_MESSAAGE_BODY:
+            return {
+              ...state,
+              newMessageBody: action.body
+            };
+          
+        case SEND_MESSAGE:
+          let body = state.newMessageBody;
+              return {
+                ...state,
+                messagesData: [...state.messagesData, {message: body,  id: 5}],
+                newMessageBody: ''
+              };
+            
         default:
             return state;
     }
