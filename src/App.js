@@ -5,13 +5,13 @@ import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import {Route, BrowserRouter} from "react-router-dom";
 import News from './components/News/News';
-import Friends from './components/Friends/Friends';
 import Communities from './components/Communities/Communities';
 import Photos from './components/Photos/Photos';
 import Music from './components/Music/Music';
 import Videos from './components/Videos/Videos';
 import Games from './components/Games/Games';
 import NavBarContainer from './components/NavBar/NavBarContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 
 function App(props) {
@@ -26,8 +26,10 @@ function App(props) {
               render={ () => <Profile/>}/>
           <Route path="/messages" 
               render={ () => <DialogsContainer/>}/>
-          <Route path="/friends" component={Friends}/>
-          <Route path="/music" component={Music}/>
+          {/* <Route path="/friends" component={Friends}/>
+          <Route path="/music" component={Music}/> */}
+          <Route path="/users"
+          render ={ () => <UsersContainer />} />
           {/* <Route path="/friends" component={Friends}/>
           <Route path="/communities" component={Communities}/>
           <Route path="/photo" component={Photos}/>
