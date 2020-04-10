@@ -1,8 +1,8 @@
 import profileIMG from './ProfileHead/images/Head.jpg'
-import avatar from './UsersInfo/Avatars/images/avatar.jpg'
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 
 let initialState ={
@@ -12,9 +12,7 @@ let initialState ={
       ],
     
     profileIMG: profileIMG,
-    usersInfo: [
-      {id:1, name:'Petr M.', city:'Saratov', avatar: avatar }
-    ],
+    profile: null,
     newPostText: ''
 };
 const profileReducer = (state = initialState, action) => {
@@ -38,6 +36,8 @@ const profileReducer = (state = initialState, action) => {
               ...state,
               newPostText: action.newText
             };
+          case SET_USER_PROFILE:
+            return {...state, profile: action.profile}
           
         default:
             return state;
@@ -55,5 +55,11 @@ export const addPostActionCreator = () =>{
       type: UPDATE_NEW_POST_TEXT,
       newText: text
     }
+  }
+  export const setUserProfile = (profile) => {
+    return {
+      type: SET_USER_PROFILE,
+      profile
+    } 
   }
 export default profileReducer;

@@ -2,19 +2,26 @@ import React from 'react';
 import classes from './UserInfo.module.css';
 import Avatar from './Avatar/Avatar';
 import Data from './Data/Data';
+import Preloader from '../../common/preloader/preloader';
 
 function UserInfo(props) {
-    let postUserInfo = props.usersInfo
-        .map(p => <div className={classes.userinfo}>
-            <Avatar avatar={p.avatar } key={p.key}/>
-            <div>
-                <Data name={p.name} city={p.city} key={p.key}/>
-            </div>
-            </div>);
+    debugger
+    if (!props.profile) {
+        return <Preloader/>
+    }else
     return(
         <div>
-            {postUserInfo}
+            
+           <div className={classes.userinfo}>
+               <Avatar avatar={props.profile.photos.large}/>
+               <div>
+                   <Data profile={props.profile} />
+               </div>
+            </div> 
+           
+            
         </div>
     );
+    // <Avatar avatar={u.photos.large} key={u.id} />
 }
 export default UserInfo;

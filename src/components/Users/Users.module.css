@@ -3,4 +3,9 @@
   }
   .selectedPage {
     font-weight: bold;
+    border: double;
+    color: red
+  }
+  .Page {
+
   }
