@@ -12,13 +12,14 @@ import Videos from './components/Videos/Videos';
 import Games from './components/Games/Games';
 import NavBarContainer from './components/NavBar/NavBarContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 
 function App(props) {
   return (
     
       <div className='app-wrapper'>
-        <Header />
+        <HeaderContainer />
         {/* <NavBar sideBar={props.state.sideBar}/> */}
         <NavBarContainer/>
         <div className='app-wrapper-content'>

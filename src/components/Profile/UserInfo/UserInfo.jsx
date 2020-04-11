@@ -5,7 +5,7 @@ import Data from './Data/Data';
 import Preloader from '../../common/preloader/preloader';
 
 function UserInfo(props) {
-    debugger
+    
     if (!props.profile) {
         return <Preloader/>
     }else
