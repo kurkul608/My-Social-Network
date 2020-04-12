@@ -10,7 +10,7 @@ function Content(props) {
  
     return(
         <div className={classes.profile}>
-          <HeaderImageContainer />
+          {/* <HeaderImageContainer /> */}
           <UserInfo profile={props.profile}/>
           <MyPostsContainer  />
         </div>

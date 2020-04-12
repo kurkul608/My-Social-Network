@@ -4,6 +4,7 @@ import Avatar from './Avatar/Avatar';
 import Data from './Data/Data';
 import Preloader from '../../common/preloader/preloader';
 import noAva from '../../../assets/images/defaultAva.png'
+import ProfileStatus from './ProfileStatus';
 
 function UserInfo(props) {
     
@@ -18,10 +19,10 @@ function UserInfo(props) {
             
            <div className={classes.userinfo}>
                {checkAva()}
-               
                <div>
                    <Data profile={props.profile} />
                </div>
+               <div><ProfileStatus status={'status'}/></div>
             </div> 
            
             
