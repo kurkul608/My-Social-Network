@@ -66,7 +66,7 @@ export const addPostActionCreator = () =>{
   }
 
   export const setUserProfileThunkCreator = (userId) => {
-    debugger
+    
     return (dispatch) => {
       (!userId) ? 
         profileAPI.getAuthMe().then(data => {

@@ -5,6 +5,7 @@ import Users from './Users';
 import Preloader from '../common/preloader/preloader'
 import { Redirect } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/auth-redirect';
+import { compose } from 'redux';
 
 
 
@@ -47,7 +48,7 @@ class UsersAPIContainer extends React.Component {
     }
 }
 
-let AuthRedirextComponent = WithAuthRedirect(UsersAPIContainer)
+
 
 let mapStateToProps =(state) => {
     return {
@@ -57,11 +58,10 @@ let mapStateToProps =(state) => {
       currentPage: state.usersPage.currentPage,
       isFetching: state.usersPage.isFetching,
       followingInProgress: state.usersPage.followingInProgress,
-      isAuth: state.auth.isAuth
     }
   
   }
 
   
-  export default connect(mapStateToProps, {  getUsersThunkCreator, setCurrentPageThunkCreator, setUnFollowThunkCreator, setFollowThunkCreator })(AuthRedirextComponent);
+  export default compose(connect(mapStateToProps, {  getUsersThunkCreator, setCurrentPageThunkCreator, setUnFollowThunkCreator, setFollowThunkCreator }), WithAuthRedirect)(UsersAPIContainer);
   

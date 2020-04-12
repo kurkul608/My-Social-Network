@@ -3,17 +3,22 @@ import classes from './UserInfo.module.css';
 import Avatar from './Avatar/Avatar';
 import Data from './Data/Data';
 import Preloader from '../../common/preloader/preloader';
+import noAva from '../../../assets/images/defaultAva.png'
 
 function UserInfo(props) {
     
     if (!props.profile) {
         return <Preloader/>
-    }else
+    }else{
+        
+        let checkAva = () => (props.profile.photos.large) ? <Avatar avatar={props.profile.photos.large}/> : <Avatar avatar={noAva}/>
+        
     return(
         <div>
             
            <div className={classes.userinfo}>
-               <Avatar avatar={props.profile.photos.large}/>
+               {checkAva()}
+               
                <div>
                    <Data profile={props.profile} />
                </div>
@@ -22,6 +27,7 @@ function UserInfo(props) {
             
         </div>
     );
+    }
     // <Avatar avatar={u.photos.large} key={u.id} />
 }
 export default UserInfo;

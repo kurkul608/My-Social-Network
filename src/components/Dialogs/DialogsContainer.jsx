@@ -4,6 +4,7 @@ import Dialogs from './Dialogs'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { WithAuthRedirect } from '../../hoc/auth-redirect';
+import { compose } from 'redux';
 
 
 class DialogsContainer extends React.Component {
@@ -19,16 +20,15 @@ class DialogsContainer extends React.Component {
     }
 }
 
-let AuthRedirextComponent = WithAuthRedirect(DialogsContainer)
+
 
 let mapStateToProps =(state) => {
     return {
         dialogData: state.dialogsPage.dialogData,
         messagesData: state.dialogsPage.messagesData,
         newMessageBody: state.dialogsPage.newMessageBody,
-        isAuth: state.auth.isAuth
     }
 
 }
 
-export default  connect(mapStateToProps, {updateNewMessageBodyActionCreator, sendMessageActionCreator})(AuthRedirextComponent);;
+export default  compose(connect(mapStateToProps, {updateNewMessageBodyActionCreator, sendMessageActionCreator}), WithAuthRedirect)(DialogsContainer)
