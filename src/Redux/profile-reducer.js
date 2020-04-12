@@ -1,4 +1,5 @@
 import profileIMG from './ProfileHead/images/Head.jpg'
+import { profileAPI } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -62,5 +63,23 @@ export const addPostActionCreator = () =>{
       type: SET_USER_PROFILE,
       profile
     } 
+  }
+
+  export const setUserProfileThunkCreator = (userId) => {
+    debugger
+    return (dispatch) => {
+      (!userId) ? 
+        profileAPI.getAuthMe().then(data => {
+          if (data.resultCode === 0) {
+            let {id} = data.data;
+            profileAPI.getUserProfile(id).then(data => {
+              dispatch(setUserProfile(data));
+                }); 
+          }})
+         : profileAPI.getUserProfile(userId).then(data => {
+          dispatch(setUserProfile(data));
+            })
+      
+    }
   }
 export default profileReducer;

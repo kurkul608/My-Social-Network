@@ -1,31 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unfollow, setUsers, setCurrentPage, changeFetching } from '../../Redux/users-reducer';
+import { getUsersThunkCreator, setCurrentPageThunkCreator, setUnFollowThunkCreator, setFollowThunkCreator } from '../../Redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/preloader/preloader'
-import { userAPI } from '../../api/api';
+
 
 
 
 class UsersAPIContainer extends React.Component {
  
     componentDidMount() {
-        this.props.changeFetching(true);
-        userAPI.getUsers(this.props.pagesCount, this.props.pageSize).then(data => {
-          this.props.changeFetching(false);
-          this.props.setUsers(data.items, data.totalCount);
-            });
-        
+       this.props.getUsersThunkCreator(this.props.pagesCount, this.props.pageSize)     
     }
+
     onPageChanged = (e) => {
-        this.props.setCurrentPage(e);
-        this.props.changeFetching(true);
-        userAPI.getUsers(e, this.props.pageSize).then(data => {
-          this.props.changeFetching(false);
-          this.props.setUsers(data.items, data.totalCount);
-            });
-        
+        this.props.setCurrentPageThunkCreator(e, this.props.pageSize)
     }
+    unFollow = (userId) => {
+      this.props.setUnFollowThunkCreator(userId);
+    }
+    follow = (userId) => {
+      this.props.setFollowThunkCreator(userId);
+    }
+
+    
 
     // eslint-disable-next-line react/require-render-return
 
@@ -33,13 +31,14 @@ class UsersAPIContainer extends React.Component {
         return(<>
                 {this.props.isFetching ? <Preloader /> : null}
                 <Users 
-                  onPageChanged={this.onPageChanged}  
+                  onPageChanged={this.onPageChanged}
+                  unFollow={this.unFollow}
+                  follow={this.follow}
                   currentPage={this.props.currentPage} 
                   totalUsersCount={this.props.totalUsersCount} 
                   pageSize={this.props.pageSize}
-                  unfollow={this.props.unfollow}
-                  follow={this.props.follow}
-                  users={this.props.users}/>
+                  users={this.props.users}
+                  followingInProgress={this.props.followingInProgress}/>
               </>);
             
     }
@@ -52,11 +51,12 @@ let mapStateToProps =(state) => {
       pageSize: state.usersPage.pageSize,
       totalUsersCount: state.usersPage.totalUsersCount,
       currentPage: state.usersPage.currentPage,
-      isFetching: state.usersPage.isFetching
+      isFetching: state.usersPage.isFetching,
+      followingInProgress: state.usersPage.followingInProgress
     }
   
   }
 
   
-  export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, changeFetching })(UsersAPIContainer);
+  export default connect(mapStateToProps, {  getUsersThunkCreator, setCurrentPageThunkCreator, setUnFollowThunkCreator, setFollowThunkCreator })(UsersAPIContainer);
   

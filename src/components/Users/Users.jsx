@@ -2,8 +2,6 @@ import React from 'react';
 import classes from './Users.module.css'
 import defaultAva from '../../assets/images/defaultAva.png'
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios'
-import { userAPI } from '../../api/api';
 
 
 let Users = (props) =>{
@@ -18,8 +16,6 @@ let Users = (props) =>{
     
     return(<div>
         <div>
-            
-            {/* <span onClick={(e) =>this.onPageChanged({pagesCount})} className={this.props.currentPage === pagesCount && classes.selectedPage}>{pagesCount}</span> */}
         </div> <br/>
         <div>
             {props.users.map(u => 
@@ -32,28 +28,8 @@ let Users = (props) =>{
                     </div>
                         
                     {u.followed 
-                    ? <div><button onClick={() =>{
-                        userAPI.unFollow(u.id).then(data => {
-                            if (data.resultCode === 0) {
-                                props.unfollow(u.id)
-                            }
-                         })
-                         
-                        }
-                        
-                        }>Unfollowed</button></div> 
-                    : <div><button onClick={() => {
-                        userAPI.followed(u.id).then(data => {
-                            if (data.resultCode === 0) {
-                                props.follow(u.id)
-                            }
-                         })
-                         
-                        }
-
-                     
-                    
-                    }>Followed</button></div>}
+                    ? <div><button disabled={props.followingInProgress.some(id=> id ===u.id)} onClick={() =>{ props.unFollow(u.id) }}>Unfollowed</button></div> 
+                    : <div><button disabled={props.followingInProgress.some(id=> id ===u.id)} onClick={() => { props.follow(u.id) }}>Followed</button></div>}
                 </span>
                 <span>  
                     <span>
@@ -68,9 +44,12 @@ let Users = (props) =>{
         {pages.map(p => {
                 switch (p) {
                     case -1: return <></>
-                    case 0:  return <button onClick={(e) => props.onPageChanged(p+1)} className={classes.Page}>First </button>
-                    case pagesCount + 1: return <button onClick={(e) => props.onPageChanged(p - 1)} className={classes.Page}>Last</button>
-                    default: return <button onClick={(e) => props.onPageChanged(p)} className={props.currentPage === p && classes.selectedPage}> {p} </button>
+                    case 0:  return <button  onClick={(e) => {
+                        props.onPageChanged(p+1) }} className={classes.Page}>First </button>
+                    case pagesCount + 1: return <button  onClick={(e) => {
+                        props.onPageChanged(p - 1)}} className={classes.Page}>Last</button>
+                    default: return <button  onClick={(e) => {
+                        props.onPageChanged(p)}} className={props.currentPage === p && classes.selectedPage}> {p} </button>
                 }
             }
             )}  
