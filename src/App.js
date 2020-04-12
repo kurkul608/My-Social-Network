@@ -13,6 +13,7 @@ import Games from './components/Games/Games';
 import NavBarContainer from './components/NavBar/NavBarContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
 
 
 function App(props) {
@@ -20,23 +21,17 @@ function App(props) {
     
       <div className='app-wrapper'>
         <HeaderContainer />
-        {/* <NavBar sideBar={props.state.sideBar}/> */}
         <NavBarContainer/>
         <div className='app-wrapper-content'>
           <Route path="/profile/:userid?" 
               render={ () => <ProfileContainer />}/>
           <Route path="/messages" 
               render={ () => <DialogsContainer/>}/>
-          {/* <Route path="/friends" component={Friends}/>
-          <Route path="/music" component={Music}/> */}
           <Route path="/users"
           render ={ () => <UsersContainer />} />
-          {/* <Route path="/friends" component={Friends}/>
-          <Route path="/communities" component={Communities}/>
-          <Route path="/photo" component={Photos}/>
-          <Route path="/music" component={Music}/>
-          <Route path="/videos" component={Videos}/>
-          <Route path="/games" component={Games}/> */}
+          <Route path="/login"
+          render ={ () => <Login />} />
+       
         </div>
       </div>
     

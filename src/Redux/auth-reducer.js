@@ -8,7 +8,7 @@ let initialState ={
     login: null,
     isAuth: false,
     isFetching: false
-};
+}; 
 const authReducer = (state = initialState, action) => {
     
     // eslint-disable-next-line default-case

@@ -2,30 +2,33 @@ import React from 'react';
 import { sendMessageActionCreator, updateNewMessageBodyActionCreator } from '../../Redux/dialogs-reducer';
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { WithAuthRedirect } from '../../hoc/auth-redirect';
 
 
+class DialogsContainer extends React.Component {
+
+    render() {
+        if (!this.props.isAuth) return <Redirect to='/login' />
+        return <Dialogs 
+        dialogData={this.props.dialogData}
+        messagesData={this.props.messagesData}
+        newMessageBody={this.props.newMessageBody}
+        sendMessage={this.props.sendMessageActionCreator}
+        updateNewMessage={this.props.updateNewMessageBodyActionCreator}/>
+    }
+}
+
+let AuthRedirextComponent = WithAuthRedirect(DialogsContainer)
 
 let mapStateToProps =(state) => {
     return {
         dialogData: state.dialogsPage.dialogData,
         messagesData: state.dialogsPage.messagesData,
-        newMessageBody: state.dialogsPage.newMessageBody
-    }
-
-}
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateNewMessage: (body) => {
-            dispatch(updateNewMessageBodyActionCreator(body))
-        },
-        sendMessage: () => {
-            dispatch(sendMessageActionCreator())
-        }
+        newMessageBody: state.dialogsPage.newMessageBody,
+        isAuth: state.auth.isAuth
     }
 
 }
 
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-
-export default DialogsContainer;
+export default  connect(mapStateToProps, {updateNewMessageBodyActionCreator, sendMessageActionCreator})(AuthRedirextComponent);;

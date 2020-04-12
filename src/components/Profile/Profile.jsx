@@ -5,8 +5,9 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import HeaderImageContainer from './HeaderImage/HeaderImageContainer';
 
 
+
 function Content(props) {
-  
+ 
     return(
         <div className={classes.profile}>
           <HeaderImageContainer />

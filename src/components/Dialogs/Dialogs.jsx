@@ -5,6 +5,7 @@ import Message from './Message/Message';
 
 
 
+
 function Dialogs(props){
     
     let newMessageElement = React.createRef();
@@ -22,6 +23,7 @@ let onMessageChange = () => {
         .map(d => <DialogName name={d.name} key={d.id} id={d.id} />);
     let messagesElement = props.messagesData
         .map(m => <Message message={m.message} key={m.id}/>);
+        
     return(
         
             <div className={classes.Dialogs}>
