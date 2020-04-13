@@ -14,6 +14,7 @@ import NavBarContainer from './components/NavBar/NavBarContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
+import LogOut from './components/Login/Logout';
 
 
 function App(props) {
@@ -31,6 +32,8 @@ function App(props) {
           render ={ () => <UsersContainer />} />
           <Route path="/login"
           render ={ () => <Login />} />
+           <Route path="/logout"
+          render ={ () => <LogOut />} />
        
         </div>
       </div>

@@ -28,6 +28,12 @@ export const profileAPI ={
     getUserProfile: (userid) => {
         
         return instance.get(`profile/${userid}`).then (response => response.data)
+    },
+    getStatus: (userId) => {
+        return instance.get(`profile/status/${userId}`).then(response => response.data)
+    },
+    putStatus: (status) => {
+        return instance.put(`profile/status`, {status: status}).then(response => response.data)
     }
 }
 
@@ -37,11 +43,11 @@ export const authAPI = {
     },
 }
 
-// export const profileStatusAPI = {
-//     getAuthMe: () => {
-//         return instance.get(`auth/me`).then (response => response.data)
-//     },
-//     getStatus: (userId) => {
-//         return instance.get(`profile/status/${userId}`)(response => response.data)
-//     }
-// }
+export const logAPI = {
+    loginMe: (email, password, rememberMe, captcha) => {
+        return instance.post('auth/login', {email, password, rememberMe, captcha})
+    },
+    logOutMe: ()=> {
+        return instance.delete('auth/login')
+    }
+}

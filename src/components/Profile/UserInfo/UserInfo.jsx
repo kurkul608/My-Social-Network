@@ -22,7 +22,7 @@ function UserInfo(props) {
                <div>
                    <Data profile={props.profile} />
                </div>
-               <div><ProfileStatus status={'status'}/></div>
+               <div><ProfileStatus putStatus={props.putStatus} status={props.status}/></div>
             </div> 
            
             
