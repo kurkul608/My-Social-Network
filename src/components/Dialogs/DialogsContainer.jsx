@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendMessageActionCreator, updateNewMessageBodyActionCreator } from '../../Redux/dialogs-reducer';
+import { sendMessageActionCreator } from '../../Redux/dialogs-reducer';
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -31,4 +31,4 @@ let mapStateToProps =(state) => {
 
 }
 
-export default  compose(connect(mapStateToProps, {updateNewMessageBodyActionCreator, sendMessageActionCreator}), WithAuthRedirect)(DialogsContainer)
+export default  compose(connect(mapStateToProps, { sendMessageActionCreator}), WithAuthRedirect)(DialogsContainer)

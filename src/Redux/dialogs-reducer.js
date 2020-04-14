@@ -19,25 +19,17 @@ let initialState = {
         {name: 'Vladimir', id: 7},
         {name: 'Oleg', id: 8},
         {name: 'Mew', id: 9}
-      ],
-      newMessageBody: ''
+      ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
-    switch(action.type){
-        case UPDATE_NEW_MESSAAGE_BODY:
-            return {
-              ...state,
-              newMessageBody: action.body
-            };
-          
+    switch(action.type){         
         case SEND_MESSAGE:
-          let body = state.newMessageBody;
+          let body = action.body;
               return {
                 ...state,
-                messagesData: [...state.messagesData, {message: body,  id: 5}],
-                newMessageBody: ''
+                messagesData: [...state.messagesData, {message: body,  id: 5}]
               };
             
         default:
@@ -46,14 +38,10 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 
-export const sendMessageActionCreator = () =>{
+
+  export const sendMessageActionCreator = (text) => {
     return {
-      type: SEND_MESSAGE
-    }
-  }
-  export const updateNewMessageBodyActionCreator = (text) => {
-    return {
-      type: UPDATE_NEW_MESSAAGE_BODY,
+      type: SEND_MESSAGE,
       body: text
     }
   }
