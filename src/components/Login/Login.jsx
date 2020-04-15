@@ -1,15 +1,17 @@
 import React from 'react'
 import {reduxForm, Field} from 'redux-form'
-import { logAPI } from '../../api/api'
 import { Input, Textarea } from '../common/preloader/FormsControls/FormsControls'
 import { requiredField } from '../../utils/validators/validators'
+import { connect } from 'react-redux'
+import { login, logout } from '../../Redux/auth-reducer'
+import { Redirect } from 'react-router-dom'
 
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'login'} name={'login'} component={Input} validate={[requiredField]}/>
+                <Field placeholder={'email'} name={'email'} component={Input} validate={[requiredField]}/>
             </div>
             <div>
                 <Field placeholder={'password'} name={'password'}component={Input} validate={[requiredField]} type={'password'}/>
@@ -33,12 +35,17 @@ const LoginReduxStore = reduxForm ({
 const Login = (props) => {
     const onSubmit = (formData) => {
         // formData.login, formData.password, formData.rememberMe;
-        logAPI.loginMe(formData.login, formData.password, formData.rememberMe)
-        
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
+    if (props.isAuth === true) return <Redirect to="/profile" />
     return <div>
         <h1>LOGIN</h1>
         <LoginReduxStore onSubmit={onSubmit} />
     </div>
 }
-export default Login;
+
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {login})(Login);

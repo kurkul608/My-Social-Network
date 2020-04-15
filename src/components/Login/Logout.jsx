@@ -1,13 +1,13 @@
 import React from 'react'
-import { logAPI } from '../../api/api'
 import { Redirect } from 'react-router-dom';
+import { logout } from '../../Redux/auth-reducer';
+import { connect } from 'react-redux';
 
-const LogOut = () => {
-    let logOut = () => {
-        logAPI.logOutMe();
-    }
+const LogOut = (props) => {
 return <div>
-    {logOut()}
+    {props.logout()}
     <Redirect to="/login"/></div>
 }
-export default LogOut;
+
+
+export default connect(null, {logout})(LogOut);

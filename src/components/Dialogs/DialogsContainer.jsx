@@ -10,7 +10,7 @@ import { compose } from 'redux';
 class DialogsContainer extends React.Component {
 
     render() {
-        if (!this.props.isAuth) return <Redirect to='/login' />
+         if (!this.props.isAuth) return <Redirect to='/login' />
         return <Dialogs 
         dialogData={this.props.dialogData}
         messagesData={this.props.messagesData}

@@ -15,7 +15,7 @@ function Header(props) {
           <div className={classes.loginBlock}>
             {props.isAuth ? (props.islogin)
             : <NavLink to='/login'>Login</NavLink>}
-            <div>{props.isAuth && <NavLink to='/logout'>LogOut</NavLink>}</div>
+            <div>{props.isAuth && <NavLink to='/logout'><button>LogOut</button></NavLink>}</div>
             
           </div>
           
