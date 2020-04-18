@@ -1,0 +1,18 @@
+.main  {
+    margin: 0px;
+    padding: 0px;
+}
+.button {
+    height: 50px; 
+    width: 50px;
+    font-size:  25px;
+    margin: 2px;
+    -webkit-appearance: button;
+}
+.textview {
+     width: 211px;
+     margin: 5px;
+     font-size:  25px;
+     padding: 5px;
+
+}

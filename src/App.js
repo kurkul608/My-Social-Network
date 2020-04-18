@@ -1,44 +1,51 @@
-import React from 'react';
-import './App.css';
-import Header from './components/Header/Header';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import {Route, BrowserRouter} from "react-router-dom";
-import News from './components/News/News';
-import Communities from './components/Communities/Communities';
-import Photos from './components/Photos/Photos';
-import Music from './components/Music/Music';
-import Videos from './components/Videos/Videos';
-import Games from './components/Games/Games';
-import NavBarContainer from './components/NavBar/NavBarContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
-import LogOut from './components/Login/Logout';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import { Route, BrowserRouter, withRouter } from "react-router-dom";
+import News from "./components/News/News";
+import Communities from "./components/Communities/Communities";
+import Photos from "./components/Photos/Photos";
+import Music from "./components/Music/Music";
+import Videos from "./components/Videos/Videos";
+import Games from "./components/Games/Games";
+import NavBarContainer from "./components/NavBar/NavBarContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
+import LogOut from "./components/Login/Logout";
+import { connect } from "react-redux";
+import { initializeApp } from "./Redux/app-reducer";
+import Preloader from "./components/common/preloader/preloader";
 
-
-function App(props) {
-  return (
-    
-      <div className='app-wrapper'>
+class App extends Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+  render() {
+    debugger
+    if (!this.props.initialized) {
+      return <Preloader />
+    }else {
+    return (
+      <div className="app-wrapper">
         <HeaderContainer />
-        <NavBarContainer/>
-        <div className='app-wrapper-content'>
-          <Route path="/profile/:userid?" 
-              render={ () => <ProfileContainer />}/>
-          <Route path="/messages" 
-              render={ () => <DialogsContainer/>}/>
-          <Route path="/users"
-          render ={ () => <UsersContainer />} />
-          <Route path="/login"
-          render ={ () => <Login />} />
-           <Route path="/logout"
-          render ={ () => <LogOut />} />
-       
+        <NavBarContainer />
+        <div className="app-wrapper-content">
+          <Route path="/profile/:userid?" render={() => <ProfileContainer />} />
+          <Route path="/messages" render={() => <DialogsContainer />} />
+          <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/login" render={() => <Login />} />
+          <Route path="/logout" render={() => <LogOut />} />
+          <Route path="/music" render={() => <Music />} />
         </div>
       </div>
-    
-  );
+    );}
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+export default withRouter(connect(mapStateToProps, {initializeApp })(App));

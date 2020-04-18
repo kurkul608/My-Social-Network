@@ -10,9 +10,10 @@ import { compose } from 'redux';
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    
-    this.props.setUserProfileThunkCreator(this.props.match.params.userid);
-    this.props.getStatus(this.props.match.params.userid);
+    let userid = this.props.match.params.userid
+    if (!userid) {userid = this.props.autorizedUserid}
+    this.props.setUserProfileThunkCreator(userid);
+    this.props.getStatus(userid); 
   }
 
   render() {
@@ -23,7 +24,10 @@ class ProfileContainer extends React.Component {
 
 
 
-let mapStateToProps = (state) => ({profile: state.profilePage.profile, status: state.profilePage.status})
+let mapStateToProps = (state) => ({
+  profile: state.profilePage.profile, 
+  status: state.profilePage.status,
+  autorizedUserid: state.auth.userID})
 
 
 export default compose(connect (mapStateToProps, {setUserProfileThunkCreator, getStatus, putStatus}),withRouter, WithAuthRedirect)(ProfileContainer);

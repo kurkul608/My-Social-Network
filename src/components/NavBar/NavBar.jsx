@@ -7,10 +7,10 @@ function NavBar (props) {
 let nav = props.menu.map(s => <div className={classes.item}><NavLink to={s.path} key={s.id} >{s.name}</NavLink></div>);
   
     return (
-        <nav className={classes.nav}>
+        <div className={classes.nav}>
          {nav}
-      </nav>
+      </div>
     );
 }
 
-export default NavBar;
+export default NavBar; 

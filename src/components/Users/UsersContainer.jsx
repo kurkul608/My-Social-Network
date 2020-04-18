@@ -45,7 +45,7 @@ class UsersAPIContainer extends React.Component {
                   followingInProgress={this.props.followingInProgress}/>
               </>);
             
-    }
+    } 
 }
 
 
