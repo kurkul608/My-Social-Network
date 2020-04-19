@@ -7,9 +7,9 @@ import { Textarea } from '../../common/preloader/FormsControls/FormsControls';
 
 const maxLenght10 = maxLenghtCreator(10)
 
-function MyPosts(props) {
+const MyPosts  = React.memo (props => {
+  console.log("render")
 
-  
   const onSubmit = (formData) =>{
     props.addPost(formData.newPost)
   }
@@ -27,7 +27,7 @@ function MyPosts(props) {
           </div>
         </div>
     );
-}
+})
 
 const AddPostForm = (props) => {
   return <form onSubmit={props.handleSubmit}>
