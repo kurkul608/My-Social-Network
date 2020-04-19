@@ -5,6 +5,7 @@ import Data from './Data/Data';
 import Preloader from '../../common/preloader/preloader';
 import noAva from '../../../assets/images/defaultAva.png'
 import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 function UserInfo(props) {
     
@@ -22,7 +23,7 @@ function UserInfo(props) {
                <div>
                    <Data profile={props.profile} />
                </div>
-               <div><ProfileStatus putStatus={props.putStatus} status={props.status}/></div>
+               <div><ProfileStatusWithHooks putStatus={props.putStatus} status={props.status}/></div>
             </div> 
            
             
