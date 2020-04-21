@@ -56,3 +56,4 @@ test('Length deleting length of message should not  be decrement if id is icorre
   // 3. expect 
    expect (newPost.postData.length).toBe(2)
 });
+
