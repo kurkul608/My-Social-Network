@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from "react";
 import "./App.css";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, HashRouter } from "react-router-dom";
 import Music from "./components/Music/Music";
 import NavBarContainer from "./components/NavBar/NavBarContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -61,11 +61,11 @@ let AppContainer = compose(
 
 const SocialNetworkApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter basename={ process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default SocialNetworkApp;
