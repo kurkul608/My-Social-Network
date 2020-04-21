@@ -1,5 +1,3 @@
-import profileIMG from "./ProfileHead/images/Head.jpg";
-import { profileAPI } from "../api/api";
 import { setAuthUserDataThunkCreator } from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = "ADD-POST";

@@ -1,0 +1,8 @@
+.selectedPage {
+    font-weight: bold;
+    border: double;
+    color: red
+  }
+  .pages {
+    margin: 10px;
+  }

@@ -1,6 +1,6 @@
 import logo from './Post/images/logo.svg'
 
-const UPDATE_NEW_MESSAAGE_BODY = 'UPDATE_NEW_MESSAAGE_BODY';
+
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {

@@ -18,7 +18,6 @@ import {
   getCurrentPage,
   getIsFetching,
   getfollowingInProgress,
-  getUsersSuper,
 } from "../../Redux/users-selector";
 
 class UsersAPIContainer extends React.Component {

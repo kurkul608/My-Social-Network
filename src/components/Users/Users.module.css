@@ -1,11 +1,7 @@
 .avatar img{
     width: 60px;
   }
-  .selectedPage {
-    font-weight: bold;
-    border: double;
-    color: red
+  .users {
+    margin: 10px;
   }
-  .Page {
-
-  }
+  

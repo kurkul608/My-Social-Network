@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './images/logo.svg';
 import classes from './Header.module.css'
 import { NavLink } from 'react-router-dom';
-import defaultAva from '../../assets/images/defaultAva.png'
+
 
 
 
@@ -11,7 +11,7 @@ import defaultAva from '../../assets/images/defaultAva.png'
 function Header(props) {
     return(
           <header className={classes.header}>
-            <img src={logo}/>
+            <img src={logo}/> 
           
           <div className={classes.loginBlock}>
             {props.isAuth ? (props.isProfile !== null ? (props.isProfile.photos.small ? <span> {props.islogin}<img className={classes.ava} src={props.isProfile.photos.small}/> </span> :< span>{props.islogin} <img className={classes.ava} /></span>) : <></>)
