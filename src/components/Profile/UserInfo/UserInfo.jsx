@@ -6,23 +6,31 @@ import Preloader from '../../common/preloader/preloader';
 import noAva from '../../../assets/images/defaultAva.png'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
-function UserInfo(props) {
+function UserInfo({savePhoto, profile, putStatus, status, isOwner}) {
     
-    if (!props.profile) {
+    if (!profile) {
         return <Preloader/>
     }else{
-        
-        let checkAva = () => (props.profile.photos.large) ? <Avatar avatar={props.profile.photos.large}/> : <Avatar avatar={noAva}/>
-        
+        const onMainPhotoSelected = (e)=> {
+            
+                savePhoto(e.target.files[0])
+            
+        }
     return(
         <div>
             
            <div className={classes.userinfo}>
-               {checkAva()}
+               <Avatar avatar={profile.photos.large || noAva}/>
+               
+               
                <div>
-                   <Data profile={props.profile} />
+                   <Data profile={profile} />
                </div>
-               <div><ProfileStatusWithHooks putStatus={props.putStatus} status={props.status}/></div>
+               <div>
+               {isOwner && <input type="file" onChange={ (e) => onMainPhotoSelected(e)}/>}
+               </div><br/>
+               <div><ProfileStatusWithHooks putStatus={putStatus} status={status}/></div>
+              
             </div> 
            
             

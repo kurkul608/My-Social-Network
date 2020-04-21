@@ -5,6 +5,7 @@ const ADD_POST = "/profilePage/ADD-POST";
 const SET_USER_PROFILE = "/profilePage/SET_USER_PROFILE";
 const SET_USER_STATUS = "/profilePage/SET_USER_STATUS";
 const DELETE_POST = "/profilePage/DELETE_POST"
+const SAVE_USER_PHOTO = "/profilePage/SAVE_USER_PHOTO"
 
 let initialState = {
   postData: [
@@ -42,6 +43,8 @@ const profileReducer = (state = initialState, action) => {
       return { ...state, status: action.status };
     case DELETE_POST:
       return {...state, postData: state.postData.filter(p => p.id !== action.id)}
+    case SAVE_USER_PHOTO:
+      return {...state, pfofile: {...state.profile, photos: action.photos}}
 
     default:
       return state;
@@ -72,6 +75,12 @@ export const setUserStatusAC = (status) => {
     status,
   };
 };
+export const saveUserPhotoAC = (photos) => {
+  return {
+    type: SAVE_USER_PHOTO,
+    photos: photos
+  }
+}
 
 
 // Thunks 
@@ -109,4 +118,10 @@ export const putStatus = (status) => async (dispatch)=>  {
     dispatch(setUserStatusAC(status))
   }
 };
+export const savePhoto = (file) => async (dispatch) => {
+  let data = await profileAPI.savePhoto(file);
+  if (data.resultCode === 0){
+    dispatch(saveUserPhotoAC(data.data.photos))
+  }
+}
 export default profileReducer;
