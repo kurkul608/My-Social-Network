@@ -1,24 +1,33 @@
-import React from 'react';
-import classes from './Data.module.css';
+import React from "react";
+import classes from "./Data.module.css";
 
-function Data(props){
-    return(
-        <div className={classes.data}>
-            Name:{props.profile.fullName} <br />
-            facebook: {props.profile.contacts.facebook} <br />
-            website: {props.profile.contacts.website} <br />
-            vk: {props.profile.contacts.vk} <br />
-            twitter: {props.profile.contacts.twitter} <br />
-            instagram: {props.profile.contacts.instagram} <br />
-            youtube: {props.profile.contacts.youtube} <br />
-            github: {props.profile.contacts.github} <br />
-            mainLink: {props.profile.contacts.mainLink} <br />
-            <div>
-                Looking for a job: {(props.profile.lookingForAJob) ? <span>Yes</span> : <span>No</span>} <br/>
-                Looking for a job description: {props.profile.lookingForAJobDescription}
-            </div>
-
-        </div>
-    );
+export function Data({ profile, isOwner, goToEditMode }) {
+    
+  return (
+    <div className={classes.data}>
+      <b>Name: </b>
+      {profile.fullName} <br />
+      <b>About me: </b>{profile.aboutMe}<br />
+      <b>Contacts: </b>
+      {Object.keys(profile.contacts).map((key) => (
+         <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+      ))}
+      <div>
+        <b>Looking for a job: </b>
+        {profile.lookingForAJob ? <span>Yes</span> : <span>No</span>} <br />
+        {profile.lookingForAJob && <b>My professional skills: </b> + (profile.lookingForAJobDescription)}
+          
+      </div>
+      {isOwner && <button onClick={goToEditMode}>Edit</button>}
+    </div>
+  );
 }
-export default Data;
+
+export const Contact = ({ contactTitle, contactValue }) => {
+  return (
+    <div>
+      <b>{contactTitle} - </b> {contactValue}{" "}
+    </div>
+  );
+};
+

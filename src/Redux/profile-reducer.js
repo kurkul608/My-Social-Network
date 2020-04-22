@@ -1,11 +1,14 @@
 import profileIMG from "./ProfileHead/images/Head.jpg";
 import { profileAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = "/profilePage/ADD-POST";
 const SET_USER_PROFILE = "/profilePage/SET_USER_PROFILE";
 const SET_USER_STATUS = "/profilePage/SET_USER_STATUS";
 const DELETE_POST = "/profilePage/DELETE_POST"
 const SAVE_USER_PHOTO = "/profilePage/SAVE_USER_PHOTO"
+const TOGGLE_IS_FETCHING="/profilePage/TOGGLE_IS_FETCHING"
+const SAVE_USER_PROFILE = "/profilePage.SAVE_USER_PROFILE"
 
 let initialState = {
   postData: [
@@ -36,6 +39,7 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         postData: [...state.postData, newPost],
         newPostText: "",
+        isFetching: true,
       };
     case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
@@ -45,7 +49,14 @@ const profileReducer = (state = initialState, action) => {
       return {...state, postData: state.postData.filter(p => p.id !== action.id)}
     case SAVE_USER_PHOTO:
       return {...state, pfofile: {...state.profile, photos: action.photos}}
-
+    case TOGGLE_IS_FETCHING:
+      return { ...state, isFetching: action.isFetching };
+    // case SAVE_USER_PROFILE:
+    //   debugger
+    //   return {...state, profile: {...state.profile, aboutMe: action.profile.aboutMe,
+    //      fullName: action.profile.fullName},
+    //     lookingForAJob: action.profile.lookingForAJob, 
+    //     lookingForAJobDescription: action.profile.lookingForAJobDescription}
     default:
       return state;
   }
@@ -81,7 +92,16 @@ export const saveUserPhotoAC = (photos) => {
     photos: photos
   }
 }
-
+// export const saveUserProfileAC = (profile) => {
+//   return {
+//     type: SAVE_USER_PROFILE,
+//     profile: profile
+//   }
+// }
+export const changeFetching = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
+});
 
 // Thunks 
 
@@ -119,9 +139,27 @@ export const putStatus = (status) => async (dispatch)=>  {
   }
 };
 export const savePhoto = (file) => async (dispatch) => {
+  dispatch(changeFetching(true))
   let data = await profileAPI.savePhoto(file);
   if (data.resultCode === 0){
     dispatch(saveUserPhotoAC(data.data.photos))
   }
+  dispatch(changeFetching(false))
+}
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  const id = getState().auth.userId
+  dispatch(changeFetching(true))
+  let data = await profileAPI.saveProfile(profile);
+  if (data.resultCode === 0){
+    dispatch(setUserProfileThunkCreator(id))
+    dispatch(changeFetching(false))
+  } else {
+    dispatch(changeFetching(false))
+    let action = stopSubmit("edit-profile", { _error: data.messages[0] });  
+    dispatch(action);
+    return Promise.reject({ _error: data.messages[0] })
+  }
+  
 }
 export default profileReducer;

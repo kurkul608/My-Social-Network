@@ -9,7 +9,7 @@ function Content(props) {
  
     return(
         <div className={classes.profile}>
-          <UserInfo savePhoto={props.savePhoto} isOwner={props.isOwner} putStatus={props.putStatus} profile={props.profile} status={props.status}/>
+          <UserInfo saveProfile={props.saveProfile} savePhoto={props.savePhoto} isOwner={props.isOwner} putStatus={props.putStatus} profile={props.profile} status={props.status}/>
           <MyPostsContainer  />
         </div>
     );

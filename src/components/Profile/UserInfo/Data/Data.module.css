@@ -1,0 +1,5 @@
+.formSummaryError {
+    border: hsl(0, 50, 50);
+    padding:  5px;
+    color:  hsl(340, 50, 40);
+}
