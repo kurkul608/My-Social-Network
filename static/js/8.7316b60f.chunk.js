@@ -1,2 +1,0 @@
-(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[8],{303:function(t,e,n){"use strict";n.r(e);var a=n(0),l=n.n(a),o=n(21),u=n(37),c=n(15);e.default=Object(c.b)(null,{logout:u.c})((function(t){return l.a.createElement("div",null,t.logout(),l.a.createElement(o.a,{to:"/login"}))}))}}]);
-//# sourceMappingURL=8.7316b60f.chunk.js.map
