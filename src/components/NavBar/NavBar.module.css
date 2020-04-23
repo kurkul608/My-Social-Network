@@ -1,4 +1,4 @@
-.nav{
+/* .nav{
     grid-area: n;
     background-color: #00ffff;
     height: 90vh;
@@ -11,4 +11,42 @@
 }
 .item a.active {
   color: black;
+} */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color: #013220;
+  left: -200px;
+}
+.sidebar.active {
+ left: 0px;
+}
+
+.sidebar a{
+  color: white;
+  text-decoration: none;
+}
+.sidebar ul li {
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+}
+.toggle_btn{
+  margin-top: -230px;
+  position: absolute;
+  left: 230px;
+  top: 230px;
+}
+.toggle_btn span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: black;
+  margin: 5px 0px;
 }

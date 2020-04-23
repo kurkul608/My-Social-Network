@@ -16,7 +16,6 @@ import classes from './Data.module.css';
   const maxLength30 = maxLenghtCreator(30);
 
  const DataReuxForm = ({handleSubmit,  profile, error}) => {
-     debugger
     return (
     <form onSubmit={handleSubmit}>
         

@@ -30,7 +30,7 @@ class App extends Component {
   }
   render() {
     if (!this.props.initialized) {
-      return <Preloader />;
+      return <div className="preloader"> <Preloader className="Preloader" /></div>
     } else {
       return (
         <div className="app-wrapper">
@@ -43,6 +43,7 @@ class App extends Component {
             <Route path="/login" render={withOutSuspense(Login)} />
             <Route path="/logout" render={withOutSuspense(LogOut)} />
             <Route path="/music" render={withOutSuspense(Music)} />
+            {/* <Route path='*' render={()=> <div>404 NOT FOUND</div>} /> */}
           </div>
         </div>
       );
