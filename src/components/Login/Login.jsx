@@ -9,19 +9,25 @@ import { connect } from "react-redux";
 import { login } from "../../Redux/auth-reducer";
 import { Redirect } from "react-router-dom";
 import classes from "../common/preloader/FormsControls/FormsControls.module.css";
+import s from "./Login.module.css"
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      {CreateField("email", "email", Input, [requiredField], "")}
+    <form className={s.parent} onSubmit={handleSubmit}>
+      <div className={s.inner}>
+        <div className={s.block}>
+        <h1>LOGIN</h1>
+        {CreateField("email", "email", Input, [requiredField], "")}
         {CreateField("password","password",Input,[requiredField],"password")}
-        {CreateField("", "rememberMe", "input", "", "checkbox", 'remember me')} 
+        {CreateField("", "rememberMe", "input", "", "checkbox", 'remember me')}
       {error && <div className={classes.formSummaryError}>{error}</div>}
       <div>
         {captchaUrl &&  <img src={captchaUrl}/>}
         {captchaUrl &&  CreateField("Symbols from image", "captcha", Input, [requiredField], "", '')}
         <button>Login</button>
       </div>
+      </div>
+        </div>
     </form>
   );
 };
@@ -35,7 +41,6 @@ const Login = (props) => {
   if (props.isAuth === true) return <Redirect to="/profile" />;
   return (
     <div>
-      <h1>LOGIN</h1>
       <LoginReduxStore onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
   );

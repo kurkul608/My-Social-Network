@@ -15,7 +15,7 @@ export function Data({ profile, isOwner, goToEditMode }) {
       <div>
         <b>Looking for a job: </b>
         {profile.lookingForAJob ? <span>Yes</span> : <span>No</span>} <br />
-        {profile.lookingForAJob ? <span><b>My professional skills: </b>  (profile.lookingForAJobDescription) </span> : <></>}
+        {profile.lookingForAJob ? <span><b>My professional skills: </b>  {profile.lookingForAJobDescription} </span> : <></>}
           
       </div>
       {isOwner && <button onClick={goToEditMode}>Edit</button>}
